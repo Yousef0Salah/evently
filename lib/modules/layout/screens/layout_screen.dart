@@ -1,5 +1,4 @@
 import 'package:evently/core/app_images.dart';
-import 'package:evently/core/theme/app_colors.dart';
 import 'package:evently/modules/layout/screens/favorite_screen.dart';
 import 'package:evently/modules/layout/screens/home_screen.dart';
 import 'package:evently/modules/layout/screens/profile_screen.dart';
@@ -26,6 +25,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
     var theme = Theme.of(context);
     var colorScheme = theme.colorScheme;
     return Scaffold(
+      // backgroundColor: theme.scaffoldBackgroundColor,
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(
           topLeft: .circular(24),
@@ -34,25 +34,30 @@ class _LayoutScreenState extends State<LayoutScreen> {
 
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
-          selectedItemColor: AppColors.lightMainColor,
           selectedIconTheme: IconThemeData(color: colorScheme.primary),
           elevation: 0,
           currentIndex: index,
+
           onTap: (value) {
             index = value;
             setState(() {});
           },
           items: [
             BottomNavigationBarItem(
-              icon: Image.asset(AppImages.home),
+              icon: ImageIcon(AssetImage(AppImages.home)),
+              activeIcon: ImageIcon(AssetImage(AppImages.selectedHome)),
+
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(AppImages.heart),
+              icon: ImageIcon(AssetImage(AppImages.heart)),
+              activeIcon: ImageIcon(AssetImage(AppImages.selectedHeart)),
               label: 'Favorite',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(AppImages.user),
+              icon: ImageIcon(AssetImage(AppImages.user)),
+              activeIcon: ImageIcon(AssetImage(AppImages.selectedUser)),
+
               label: 'Profile',
             ),
           ],

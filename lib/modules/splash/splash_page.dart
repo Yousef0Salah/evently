@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:evently/core/app_images.dart';
+import 'package:evently/modules/layout/screens/layout_screen.dart';
 import 'package:evently/modules/onboarding/screens/start_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
@@ -33,10 +35,12 @@ class SplashPage extends StatelessWidget {
             FadeInUp(
               delay: Duration(seconds: 2),
               onFinish: (direction) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => startScreen()),
-                );
+                bool isLogin = FirebaseAuth.instance.currentUser != null;
+                if (isLogin) {
+                  Navigator.pushNamed(context, LayoutScreen.id);
+                } else {
+                  Navigator.pushNamed(context, startScreen.id);
+                }
               },
               child: Image.asset(
                 AppImages.pranding,
