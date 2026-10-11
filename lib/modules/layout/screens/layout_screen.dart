@@ -1,4 +1,5 @@
 import 'package:evently/core/app_images.dart';
+import 'package:evently/modules/add_event/screen/add_event.dart';
 import 'package:evently/modules/layout/screens/favorite_screen.dart';
 import 'package:evently/modules/layout/screens/home_screen.dart';
 import 'package:evently/modules/layout/screens/profile_screen.dart';
@@ -25,6 +26,13 @@ class _LayoutScreenState extends State<LayoutScreen> {
     var theme = Theme.of(context);
     var colorScheme = theme.colorScheme;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, AddEvent.id);
+        },
+        shape: RoundedRectangleBorder(borderRadius: .circular(50)),
+        child: Icon(Icons.add, color: Colors.white),
+      ),
       // backgroundColor: theme.scaffoldBackgroundColor,
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(

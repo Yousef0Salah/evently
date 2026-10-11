@@ -1,3 +1,4 @@
+import 'package:evently/modules/add_event/screen/add_event.dart';
 import 'package:evently/modules/auth/screens/forget_password_screen.dart';
 import 'package:evently/modules/auth/screens/login_screen.dart';
 import 'package:evently/modules/auth/screens/singup_screen.dart';
@@ -22,5 +23,6 @@ class AppRoute {
     HomeScreen.id: (_) => const HomeScreen(),
     FavoriteScreen.id: (_) => const FavoriteScreen(),
     ProfileScreen.id: (_) => const ProfileScreen(),
+    AddEvent.id: (_) => const AddEvent(),
   };
 }

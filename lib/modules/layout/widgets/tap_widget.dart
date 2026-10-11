@@ -19,7 +19,7 @@ class TapWidget extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: .circular(16),
-          color: isSelected ? colorScheme.primary : Colors.white,
+          color: isSelected ? colorScheme.primary : colorScheme.surface,
           border: BoxBorder.all(color: theme.dividerColor),
         ),
         child: Row(
@@ -33,7 +33,7 @@ class TapWidget extends StatelessWidget {
               categories.name,
               style: TextStyle(
                 fontSize: 16,
-                color: isSelected ? Colors.white : Colors.black,
+                color: isSelected ? Colors.white : colorScheme.onSurface,
               ),
             ),
           ],

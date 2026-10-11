@@ -18,6 +18,28 @@ abstract class AppTheme {
 
     scaffoldBackgroundColor: AppColors.lightBackground,
 
+    inputDecorationTheme: InputDecorationThemeData(
+      hintStyle: TextStyle(color: AppColors.lightSecText),
+      fillColor: AppColors.lightInputs,
+      filled: true,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: .circular(16),
+        borderSide: BorderSide(color: AppColors.lightStroke),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: .circular(16),
+        borderSide: BorderSide(color: AppColors.lightStroke),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: .circular(16),
+        borderSide: BorderSide(color: AppColors.lightRed),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: .circular(16),
+        borderSide: BorderSide(color: AppColors.lightRed),
+      ),
+    ),
+
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         fontSize: 20,
@@ -57,6 +79,28 @@ abstract class AppTheme {
       outline: AppColors.darkStroke,
       error: AppColors.darkRed,
       onPrimaryFixed: AppColors.lightBackground,
+    ),
+
+    inputDecorationTheme: InputDecorationThemeData(
+      hintStyle: TextStyle(color: AppColors.lightSecText),
+      fillColor: AppColors.lightInputs,
+      filled: true,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: .circular(16),
+        borderSide: BorderSide(color: AppColors.darkStroke),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: .circular(16),
+        borderSide: BorderSide(color: AppColors.darkStroke),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: .circular(16),
+        borderSide: BorderSide(color: AppColors.darkRed),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: .circular(16),
+        borderSide: BorderSide(color: AppColors.darkRed),
+      ),
     ),
 
     scaffoldBackgroundColor: AppColors.darkBackground,
