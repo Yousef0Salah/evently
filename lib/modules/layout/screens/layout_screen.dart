@@ -33,7 +33,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
         ),
 
         child: BottomNavigationBar(
-          backgroundColor: Colors.white,
+          fixedColor: colorScheme.primary,
+          // backgroundColor: Colors.white,
           selectedIconTheme: IconThemeData(color: colorScheme.primary),
           elevation: 0,
           currentIndex: index,
