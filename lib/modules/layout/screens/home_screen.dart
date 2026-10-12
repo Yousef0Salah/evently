@@ -1,6 +1,7 @@
 import 'package:evently/core/app_images.dart';
 import 'package:evently/core/app_provider/app_provider.dart';
 import 'package:evently/core/constants/app_categories.dart';
+import 'package:evently/core/services/db_service.dart';
 import 'package:evently/modules/layout/widgets/event_widget.dart';
 import 'package:evently/modules/layout/widgets/tap_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -108,14 +109,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-             
+
               //-------------body-----------
-              Expanded(
-                child: ListView.separated(
-                  itemBuilder: (context, index) => EventWidget(),
-                  separatorBuilder: (context, index) => SizedBox(height: 16),
-                  itemCount: 6,
-                ),
+              FutureBuilder(
+                future: DbService.getEvent(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text(snapshot.error.toString()));
+                  } else {
+                    final events = snapshot.data ?? [];
+                    return Expanded(
+                      child: ListView.separated(
+                        itemBuilder: (context, index) => EventWidget(
+                          event: events[index],
+                          onTapFav: () async {
+                            await DbService.toggleFav(events[index]);
+                            setState(() {});
+                          },
+                        ),
+                        separatorBuilder: (context, index) =>
+                            SizedBox(height: 16),
+                        itemCount: events.length,
+                      ),
+                    );
+                  }
+                },
               ),
             ],
           ),

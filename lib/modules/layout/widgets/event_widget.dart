@@ -1,14 +1,20 @@
 import 'package:evently/core/app_images.dart';
+import 'package:evently/core/constants/app_categories.dart';
+import 'package:evently/core/models/event_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class EventWidget extends StatelessWidget {
-  const EventWidget({super.key});
-
+  const EventWidget({super.key, required this.event, this.onTapFav});
+  final EventModel event;
+  final Function()? onTapFav;
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var colorScheme = theme.colorScheme;
-
+    var category = AppCategories.categories.firstWhere((element) {
+      return element.id == event.categoryId;
+    });
     return Container(
       width: double.infinity,
       height: 200,
@@ -16,7 +22,7 @@ class EventWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: theme.dividerColor),
         image: DecorationImage(
-          image: AssetImage(AppImages.birthday),
+          image: AssetImage(category.image),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(16),
@@ -35,7 +41,7 @@ class EventWidget extends StatelessWidget {
                 border: Border.all(color: theme.dividerColor),
               ),
               child: Text(
-                '21 Jan',
+                event.date.substring(0, 10),
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: .w600,
@@ -54,10 +60,26 @@ class EventWidget extends StatelessWidget {
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   Text(
-                    'This is a Birthday Party ',
+                    event.title,
                     style: TextStyle(fontSize: 14, fontWeight: .w500),
                   ),
-                  Image.asset(AppImages.heart, color: colorScheme.primary),
+                  InkWell(
+                    onTap: () {
+                      onTapFav!();
+                    },
+                    child:
+                        event.usersFav.contains(
+                          FirebaseAuth.instance.currentUser!.uid,
+                        )
+                        ? Image.asset(
+                            AppImages.selectedHeart,
+                            color: colorScheme.primary,
+                          )
+                        : Image.asset(
+                            AppImages.heart,
+                            color: colorScheme.primary,
+                          ),
+                  ),
                 ],
               ),
             ),

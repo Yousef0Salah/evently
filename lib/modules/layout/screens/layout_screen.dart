@@ -28,7 +28,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, AddEvent.id);
+          Navigator.pushNamed(context, AddEvent.id).then((value) {
+            setState(() {});
+          });
         },
         shape: RoundedRectangleBorder(borderRadius: .circular(50)),
         child: Icon(Icons.add, color: Colors.white),
