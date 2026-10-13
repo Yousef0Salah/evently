@@ -2,6 +2,7 @@ import 'package:evently/core/app_images.dart';
 import 'package:evently/core/app_provider/app_provider.dart';
 import 'package:evently/core/constants/app_categories.dart';
 import 'package:evently/core/services/db_service.dart';
+import 'package:evently/modules/event_details/screens/event_details.dart';
 import 'package:evently/modules/layout/widgets/event_widget.dart';
 import 'package:evently/modules/layout/widgets/tap_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,12 +19,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppProvider>(context);
-    var theme = Theme.of(context);
-    var colorScheme = theme.colorScheme;
-    var user = FirebaseAuth.instance.currentUser!;
+    final provider = Provider.of<AppProvider>(context);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final user = FirebaseAuth.instance.currentUser!;
+
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
@@ -43,29 +46,29 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          user.displayName!,
+                          user.displayName ?? 'User',
                           style: theme.textTheme.titleLarge,
                         ),
                       ],
                     ),
                   ),
                   provider.themeMode == ThemeMode.light
-                      ? ImageIcon(AssetImage(AppImages.sun))
-                      : ImageIcon(AssetImage(AppImages.moon)),
+                      ? const ImageIcon(AssetImage(AppImages.sun))
+                      : const ImageIcon(AssetImage(AppImages.moon)),
                   const SizedBox(width: 8),
                   Container(
-                    padding: .all(4),
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      borderRadius: .circular(8),
+                      borderRadius: BorderRadius.circular(8),
                       color: colorScheme.primary,
                     ),
                     child: Center(
                       child: Text(
                         provider.appLocale.languageCode.toUpperCase(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
-                          fontWeight: .w500,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -83,9 +86,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   dividerColor: Colors.transparent,
                   indicatorColor: Colors.transparent,
                   isScrollable: true,
-                  tabAlignment: .start,
-                  padding: .all(0),
-                  labelPadding: .all(8),
+                  tabAlignment: TabAlignment.start,
+                  padding: EdgeInsets.zero,
+                  labelPadding: const EdgeInsets.all(8),
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.black,
                   tabs: [
@@ -115,22 +118,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 future: DbService.getEvent(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
                     return Center(child: Text(snapshot.error.toString()));
                   } else {
                     final events = snapshot.data ?? [];
                     return Expanded(
                       child: ListView.separated(
-                        itemBuilder: (context, index) => EventWidget(
-                          event: events[index],
-                          onTapFav: () async {
-                            await DbService.toggleFav(events[index]);
-                            setState(() {});
+                        itemBuilder: (context, index) => InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    EventDetails(event: events[index]),
+                              ),
+                            );
                           },
+                          child: EventWidget(
+                            event: events[index],
+                            onTapFav: () async {
+                              await DbService.toggleFav(events[index]);
+                              setState(() {});
+                            },
+                          ),
                         ),
                         separatorBuilder: (context, index) =>
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                         itemCount: events.length,
                       ),
                     );

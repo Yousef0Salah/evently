@@ -2,6 +2,7 @@ import 'package:evently/modules/add_event/screen/add_event.dart';
 import 'package:evently/modules/auth/screens/forget_password_screen.dart';
 import 'package:evently/modules/auth/screens/login_screen.dart';
 import 'package:evently/modules/auth/screens/singup_screen.dart';
+import 'package:evently/modules/event_details/screens/event_details.dart';
 import 'package:evently/modules/layout/screens/favorite_screen.dart';
 import 'package:evently/modules/layout/screens/home_screen.dart';
 import 'package:evently/modules/layout/screens/layout_screen.dart';
@@ -24,5 +25,6 @@ class AppRoute {
     FavoriteScreen.id: (_) => const FavoriteScreen(),
     ProfileScreen.id: (_) => const ProfileScreen(),
     AddEvent.id: (_) => const AddEvent(),
+    // EventDetails.id : (_) => const EventDetails(event: event),
   };
 }

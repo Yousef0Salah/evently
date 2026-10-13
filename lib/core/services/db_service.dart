@@ -11,6 +11,10 @@ class DbService {
     doc.set(event.toJson());
   }
 
+  static Future<void> deleteEvent(String id) async {
+    firebase.collection('Events').doc(id).delete();
+  }
+
   static Future<List<EventModel>> getEvent() async {
     List<EventModel> events = [];
     var data = await firebase.collection('Events').get();

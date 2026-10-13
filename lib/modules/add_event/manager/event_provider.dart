@@ -52,4 +52,10 @@ class EventProvider extends ChangeNotifier {
     events = await DbService.getEvent();
     notifyListeners();
   }
+
+  void deleteEvent(String id,BuildContext context) async {
+    await DbService.deleteEvent(id);
+    Navigator.pop(context);
+    
+  }
 }

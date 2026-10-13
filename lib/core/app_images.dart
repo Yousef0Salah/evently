@@ -11,6 +11,9 @@ abstract class AppImages {
   static const String selectedUser = 'assets/icons/selectedUser.png';
   static const String selectedHome = 'assets/icons/selectedHome.png';
   static const String selectedHeart = 'assets/icons/selectedHeart.png';
+  static const String delete = 'assets/icons/delete.png';
+  static const String edit = 'assets/icons/edit.png';
+
   //--------------------category------------
   static const String birthday = 'assets/category/Birthday.png';
   static const String bookClub = 'assets/category/BookClub.png';
