@@ -1,6 +1,7 @@
 import 'package:evently/core/app_images.dart';
 import 'package:evently/core/app_provider/app_provider.dart';
 import 'package:evently/core/constants/app_categories.dart';
+import 'package:evently/core/models/event_model.dart';
 import 'package:evently/core/services/db_service.dart';
 import 'package:evently/modules/event_details/screens/event_details.dart';
 import 'package:evently/modules/layout/widgets/event_widget.dart';
@@ -114,15 +115,23 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
 
               //-------------body-----------
-              FutureBuilder(
-                future: DbService.getEvent(),
+              StreamBuilder(
+                stream: DbService.getEventStream(
+                  currentIndex == 0
+                      ? null
+                      : AppCategories.categories[currentIndex-1 ].id,
+                ),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
                     return Center(child: Text(snapshot.error.toString()));
                   } else {
-                    final events = snapshot.data ?? [];
+                    final List<EventModel> events = [];
+                    for (var e in snapshot.data!.docs) {
+                      var event = EventModel.fromJson(e.data());
+                      events.add(event);
+                    }
                     return Expanded(
                       child: ListView.separated(
                         itemBuilder: (context, index) => InkWell(
@@ -150,6 +159,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                 },
               ),
+              // FutureBuilder(
+              //   future: DbService.getEvent(),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.connectionState == ConnectionState.waiting) {
+              //       return const Center(child: CircularProgressIndicator());
+              //     } else if (snapshot.hasError) {
+              //       return Center(child: Text(snapshot.error.toString()));
+              //     } else {
+              //       final events = snapshot.data ?? [];
+              //       return Expanded(
+              //         child: ListView.separated(
+              //           itemBuilder: (context, index) => InkWell(
+              //             onTap: () {
+              //               Navigator.of(context).push(
+              //                 MaterialPageRoute(
+              //                   builder: (_) =>
+              //                       EventDetails(event: events[index]),
+              //                 ),
+              //               );
+              //             },
+              //             child: EventWidget(
+              //               event: events[index],
+              //               onTapFav: () async {
+              //                 await DbService.toggleFav(events[index]);
+              //                 setState(() {});
+              //               },
+              //             ),
+              //           ),
+              //           separatorBuilder: (context, index) =>
+              //               const SizedBox(height: 16),
+              //           itemCount: events.length,
+              //         ),
+              //       );
+              //     }
+              //   },
+              // ),
             ],
           ),
         ),

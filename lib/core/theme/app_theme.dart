@@ -19,6 +19,7 @@ abstract class AppTheme {
     scaffoldBackgroundColor: AppColors.lightBackground,
 
     inputDecorationTheme: InputDecorationThemeData(
+      
       hintStyle: TextStyle(color: AppColors.lightSecText),
       fillColor: AppColors.lightInputs,
       filled: true,
@@ -83,7 +84,7 @@ abstract class AppTheme {
 
     inputDecorationTheme: InputDecorationThemeData(
       hintStyle: TextStyle(color: AppColors.lightSecText),
-      fillColor: AppColors.lightInputs,
+      fillColor: AppColors.darkInputs,
       filled: true,
       enabledBorder: OutlineInputBorder(
         borderRadius: .circular(16),

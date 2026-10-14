@@ -56,9 +56,7 @@ class AddEvent extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: .circular(16),
-                    child: Image.asset(
-                      provider.selectedCategory.image,
-                    ),
+                    child: Image.asset(provider.selectedCategory.image),
                   ),
                   DefaultTabController(
                     length: AppCategories.categories.length,
@@ -89,6 +87,8 @@ class AddEvent extends StatelessWidget {
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: provider.titleEditingController,
+                                          style: theme.textTheme.titleLarge!.copyWith(fontSize: 18),
+
                     decoration: InputDecoration(hint: Text('Event Title')),
                   ),
                   const SizedBox(height: 8),
@@ -100,6 +100,7 @@ class AddEvent extends StatelessWidget {
                       controller: provider.descEditingController,
                       maxLines: null,
                       expands: true,
+                      style: theme.textTheme.titleLarge!.copyWith(fontSize: 18),
                       textAlignVertical: TextAlignVertical.top,
                       decoration: InputDecoration(
                         hint: Text('Event Description...'),
@@ -112,7 +113,7 @@ class AddEvent extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.date_range_outlined,
-                        color: theme.primaryColor,
+                        color: theme.colorScheme.onSurface,
                       ),
                       const SizedBox(width: 8),
                       Text('Event Date', style: theme.textTheme.titleLarge),
@@ -146,7 +147,10 @@ class AddEvent extends StatelessWidget {
 
                   Row(
                     children: [
-                      Icon(Icons.access_time, color: theme.primaryColor),
+                      Icon(
+                        Icons.access_time,
+                        color: theme.colorScheme.onSurface,
+                      ),
                       const SizedBox(width: 8),
                       Text('Event Time', style: theme.textTheme.titleLarge),
                       Spacer(),

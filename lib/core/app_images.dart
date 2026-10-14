@@ -13,6 +13,7 @@ abstract class AppImages {
   static const String selectedHeart = 'assets/icons/selectedHeart.png';
   static const String delete = 'assets/icons/delete.png';
   static const String edit = 'assets/icons/edit.png';
+  static const String search = 'assets/icons/search.png';
 
   //--------------------category------------
   static const String birthday = 'assets/category/Birthday.png';

@@ -11,6 +11,12 @@ class DbService {
     doc.set(event.toJson());
   }
 
+  static Future<void> updateEvent(EventModel event) async {
+    var doc = await firebase.collection('Events').doc(event.id);
+    event.id = doc.id;
+    doc.set(event.toJson());
+  }
+
   static Future<void> deleteEvent(String id) async {
     firebase.collection('Events').doc(id).delete();
   }
@@ -18,6 +24,40 @@ class DbService {
   static Future<List<EventModel>> getEvent() async {
     List<EventModel> events = [];
     var data = await firebase.collection('Events').get();
+    for (var e in data.docs) {
+      var event = EventModel.fromJson(e.data());
+      events.add(event);
+    }
+    return events;
+  }
+
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getEventStream(String? categoryId)  {
+
+    var data;
+    if(categoryId == null){
+     data =  firebase
+        .collection('Events')
+        .snapshots();
+    }else{
+
+   data =  firebase
+        .collection('Events')
+        .where('categoryId', isEqualTo: categoryId)
+        .snapshots();
+    }
+
+    
+    return data;
+  }
+
+  static Future<List<EventModel>> getEventFav() async {
+    List<EventModel> events = [];
+    var userId = FirebaseAuth.instance.currentUser!.uid;
+
+    var data = await firebase
+        .collection('Events')
+        .where('userFav', arrayContains: userId)
+        .get();
     for (var e in data.docs) {
       var event = EventModel.fromJson(e.data());
       events.add(event);

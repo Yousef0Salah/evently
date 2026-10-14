@@ -20,6 +20,7 @@ class EventDetails extends StatelessWidget {
     AppCategories categories = AppCategories.categories.firstWhere(
       (element) => element.id == event.categoryId,
     );
+    
     return ChangeNotifierProvider(
       create: (context) => EventProvider(),
       child: Scaffold(

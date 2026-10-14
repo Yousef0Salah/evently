@@ -11,12 +11,13 @@ class EditEvent extends StatelessWidget {
   const EditEvent({super.key, required this.event});
   static const String id = 'editEvent';
   final EventModel event;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var provider = Provider.of<AppProvider>(context);
     return ChangeNotifierProvider(
-      create: (context) => EventProvider(),
+      create: (context) => EventProvider(event: event),
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: theme.scaffoldBackgroundColor,
@@ -87,6 +88,8 @@ class EditEvent extends StatelessWidget {
                   Text('Title', style: theme.textTheme.titleLarge),
                   const SizedBox(height: 8),
                   TextFormField(
+                    style: theme.textTheme.titleLarge!.copyWith(fontSize: 18),
+
                     controller: provider.titleEditingController,
                     decoration: InputDecoration(hint: Text('Event Title')),
                   ),
@@ -99,6 +102,8 @@ class EditEvent extends StatelessWidget {
                       controller: provider.descEditingController,
                       maxLines: null,
                       expands: true,
+                      style: theme.textTheme.titleLarge!.copyWith(fontSize: 18),
+
                       textAlignVertical: TextAlignVertical.top,
                       decoration: InputDecoration(
                         hint: Text('Event Description...'),
@@ -111,7 +116,7 @@ class EditEvent extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.date_range_outlined,
-                        color: theme.primaryColor,
+                        color: theme.colorScheme.onSurface,
                       ),
                       const SizedBox(width: 8),
                       Text('Event Date', style: theme.textTheme.titleLarge),
@@ -145,7 +150,10 @@ class EditEvent extends StatelessWidget {
 
                   Row(
                     children: [
-                      Icon(Icons.access_time, color: theme.primaryColor),
+                      Icon(
+                        Icons.access_time,
+                        color: theme.colorScheme.onSurface,
+                      ),
                       const SizedBox(width: 8),
                       Text('Event Time', style: theme.textTheme.titleLarge),
                       Spacer(),
@@ -181,13 +189,13 @@ class EditEvent extends StatelessWidget {
                       padding: .all(12),
                     ),
                     onPressed: () {
-                      provider.addEvent(context);
+                      provider.updateEvent(context);
                     },
                     child: Center(
                       child: provider.isLoading
                           ? CircularProgressIndicator()
                           : Text(
-                              'Add event',
+                              'Update event',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
