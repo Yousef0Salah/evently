@@ -113,4 +113,73 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resetPasswordImageAlt => 'Reset password illustration';
+
+  @override
+  String get categorySport => 'Sport';
+
+  @override
+  String get categoryBirthday => 'Birthday';
+
+  @override
+  String get categoryBookClub => 'Book Club';
+
+  @override
+  String get categoryExhibition => 'Exhibition';
+
+  @override
+  String get categoryMeeting => 'Meeting';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get welcomeBack => 'Welcome Back ✨';
+
+  @override
+  String get user => 'User';
+
+  @override
+  String get searchForEvent => 'Search for event';
+
+  @override
+  String get darkMode => 'Dark mode';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get addEvent => 'Add event';
+
+  @override
+  String get title => 'Title';
+
+  @override
+  String get eventTitle => 'Event Title';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get eventDescription => 'Event Description...';
+
+  @override
+  String get eventDate => 'Event Date';
+
+  @override
+  String get chooseDate => 'Choose date';
+
+  @override
+  String get eventTime => 'Event Time';
+
+  @override
+  String get chooseTime => 'Choose time';
+
+  @override
+  String get eventDetails => 'Event details';
+
+  @override
+  String get editEvent => 'Edit event';
+
+  @override
+  String get updateEvent => 'Update event';
 }

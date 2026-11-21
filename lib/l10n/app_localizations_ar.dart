@@ -113,4 +113,73 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resetPasswordImageAlt => 'صورة إعادة تعيين كلمة المرور';
+
+  @override
+  String get categorySport => 'رياضة';
+
+  @override
+  String get categoryBirthday => 'عيد ميلاد';
+
+  @override
+  String get categoryBookClub => 'نادي الكتاب';
+
+  @override
+  String get categoryExhibition => 'معرض';
+
+  @override
+  String get categoryMeeting => 'اجتماع';
+
+  @override
+  String get all => 'الكل';
+
+  @override
+  String get welcomeBack => 'مرحبًا بعودتك ✨';
+
+  @override
+  String get user => 'مستخدم';
+
+  @override
+  String get searchForEvent => 'ابحث عن فعالية';
+
+  @override
+  String get darkMode => 'الوضع الداكن';
+
+  @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
+  String get addEvent => 'إضافة فعالية';
+
+  @override
+  String get title => 'العنوان';
+
+  @override
+  String get eventTitle => 'عنوان الفعالية';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get eventDescription => 'وصف الفعالية...';
+
+  @override
+  String get eventDate => 'تاريخ الفعالية';
+
+  @override
+  String get chooseDate => 'اختر التاريخ';
+
+  @override
+  String get eventTime => 'وقت الفعالية';
+
+  @override
+  String get chooseTime => 'اختر الوقت';
+
+  @override
+  String get eventDetails => 'تفاصيل الفعالية';
+
+  @override
+  String get editEvent => 'تعديل الفعالية';
+
+  @override
+  String get updateEvent => 'تحديث الفعالية';
 }

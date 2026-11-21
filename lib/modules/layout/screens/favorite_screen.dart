@@ -1,6 +1,7 @@
 import 'package:evently/core/app_images.dart';
 import 'package:evently/core/models/event_model.dart';
 import 'package:evently/core/services/db_service.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/modules/event_details/screens/event_details.dart';
 import 'package:evently/modules/layout/widgets/event_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   List<EventModel> resultSearch = [];
   @override
   Widget build(BuildContext context) {
+  final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -26,7 +28,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               TextField(
                 decoration: InputDecoration(
                   suffixIcon: Image.asset(AppImages.search),
-                  hintText: 'Search for event',
+                  hintText: l10n.searchForEvent,
                 ),
               ),
               const SizedBox(height: 24),

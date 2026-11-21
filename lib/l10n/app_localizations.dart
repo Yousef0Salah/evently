@@ -301,6 +301,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reset password illustration'**
   String get resetPasswordImageAlt;
+
+  /// Category name for sport events
+  ///
+  /// In en, this message translates to:
+  /// **'Sport'**
+  String get categorySport;
+
+  /// Category name for birthday events
+  ///
+  /// In en, this message translates to:
+  /// **'Birthday'**
+  String get categoryBirthday;
+
+  /// Category name for book club events
+  ///
+  /// In en, this message translates to:
+  /// **'Book Club'**
+  String get categoryBookClub;
+
+  /// Category name for exhibition events
+  ///
+  /// In en, this message translates to:
+  /// **'Exhibition'**
+  String get categoryExhibition;
+
+  /// Category name for meeting events
+  ///
+  /// In en, this message translates to:
+  /// **'Meeting'**
+  String get categoryMeeting;
+
+  /// Tab meaning all events
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// Greeting on the home screen
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome Back ✨'**
+  String get welcomeBack;
+
+  /// Fallback name when the user has no display name
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get user;
+
+  /// Hint text of the event search field
+  ///
+  /// In en, this message translates to:
+  /// **'Search for event'**
+  String get searchForEvent;
+
+  /// Toggle label for dark mode
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode'**
+  String get darkMode;
+
+  /// Logout button label
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// AppBar title and button label for the add event screen
+  ///
+  /// In en, this message translates to:
+  /// **'Add event'**
+  String get addEvent;
+
+  /// Label for the event title field
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get title;
+
+  /// Hint text for the event title field
+  ///
+  /// In en, this message translates to:
+  /// **'Event Title'**
+  String get eventTitle;
+
+  /// Label for the event description field
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// Hint text for the event description field
+  ///
+  /// In en, this message translates to:
+  /// **'Event Description...'**
+  String get eventDescription;
+
+  /// Label for the event date picker
+  ///
+  /// In en, this message translates to:
+  /// **'Event Date'**
+  String get eventDate;
+
+  /// Placeholder before a date is selected
+  ///
+  /// In en, this message translates to:
+  /// **'Choose date'**
+  String get chooseDate;
+
+  /// Label for the event time picker
+  ///
+  /// In en, this message translates to:
+  /// **'Event Time'**
+  String get eventTime;
+
+  /// Placeholder before a time is selected
+  ///
+  /// In en, this message translates to:
+  /// **'Choose time'**
+  String get chooseTime;
+
+  /// AppBar title of the event details screen
+  ///
+  /// In en, this message translates to:
+  /// **'Event details'**
+  String get eventDetails;
+
+  /// AppBar title of the edit event screen
+  ///
+  /// In en, this message translates to:
+  /// **'Edit event'**
+  String get editEvent;
+
+  /// Button label to save event edits
+  ///
+  /// In en, this message translates to:
+  /// **'Update event'**
+  String get updateEvent;
 }
 
 class _AppLocalizationsDelegate

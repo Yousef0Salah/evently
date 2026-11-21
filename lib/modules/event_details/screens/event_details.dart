@@ -3,6 +3,7 @@ import 'package:evently/core/app_provider/app_provider.dart';
 import 'package:evently/core/constants/app_categories.dart';
 import 'package:evently/core/models/event_model.dart';
 import 'package:evently/core/services/db_service.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/modules/add_event/manager/event_provider.dart';
 import 'package:evently/modules/edit_event/screens/edit_event.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class EventDetails extends StatelessWidget {
     var theme = Theme.of(context);
     var provider = Provider.of<AppProvider>(context);
     final bool isDark = provider.themeMode == ThemeMode.dark;
-
+    final l10n = AppLocalizations.of(context)!;
     AppCategories categories = AppCategories.categories.firstWhere(
       (element) => element.id == event.categoryId,
     );
@@ -28,7 +29,7 @@ class EventDetails extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: theme.scaffoldBackgroundColor,
-          title: Text('Event details', style: theme.textTheme.titleLarge),
+          title: Text(l10n.eventDetails, style: theme.textTheme.titleLarge),
           centerTitle: true,
           leading: FittedBox(
             fit: BoxFit.scaleDown,
@@ -158,7 +159,7 @@ class EventDetails extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  Text('Description', style: theme.textTheme.titleLarge),
+                  Text(l10n.description, style: theme.textTheme.titleLarge),
 
                   const SizedBox(height: 16),
                   Container(

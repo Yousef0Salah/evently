@@ -1,5 +1,6 @@
 import 'package:evently/core/app_images.dart';
 import 'package:evently/core/app_provider/app_provider.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/modules/auth/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +20,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     var theme = Theme.of(context);
     var user = FirebaseAuth.instance.currentUser!;
     var provider = Provider.of<AppProvider>(context);
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-
             children: [
               const SizedBox(height: 70, width: double.infinity),
               CircleAvatar(
@@ -39,7 +41,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 24),
               Container(
                 height: 48,
-
                 padding: .all(8),
                 decoration: BoxDecoration(
                   borderRadius: .circular(16),
@@ -50,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Expanded(
                       child: Text(
-                        'Dark mode',
+                        l10n.darkMode,
                         style: theme.textTheme.titleMedium,
                       ),
                     ),
@@ -83,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             Center(
                               child: Text(
-                                'Language',
+                                l10n.language,
                                 style: theme.textTheme.titleMedium,
                               ),
                             ),
@@ -98,7 +99,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   borderRadius: .circular(16),
                                   color: theme.colorScheme.surface,
                                   border: Border.all(
-                                    color: provider.appLocale == Locale('ar')
+                                    color:
+                                        provider.appLocale == const Locale('ar')
                                         ? theme.colorScheme.primary
                                         : theme.dividerColor,
                                   ),
@@ -107,7 +109,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        'Arabic',
+                                        l10n.arabic,
                                         style: theme.textTheme.titleMedium,
                                       ),
                                     ),
@@ -131,7 +133,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   borderRadius: .circular(16),
                                   color: theme.colorScheme.surface,
                                   border: Border.all(
-                                    color: provider.appLocale == Locale('en')
+                                    color:
+                                        provider.appLocale == const Locale('en')
                                         ? theme.colorScheme.primary
                                         : theme.dividerColor,
                                   ),
@@ -140,7 +143,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        'English',
+                                        l10n.english,
                                         style: theme.textTheme.titleMedium,
                                       ),
                                     ),
@@ -171,7 +174,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Language',
+                          l10n.language,
                           style: theme.textTheme.titleMedium,
                         ),
                       ),
@@ -184,7 +187,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-
               GestureDetector(
                 onTap: () {
                   FirebaseAuth.instance.signOut();
@@ -196,14 +198,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   decoration: BoxDecoration(
                     borderRadius: .circular(16),
                     color: theme.colorScheme.surface,
-
                     border: Border.all(color: theme.dividerColor),
                   ),
                   child: Row(
                     children: [
                       Expanded(
                         child: Text(
-                          'Logout',
+                          l10n.logout,
                           style: theme.textTheme.titleMedium,
                         ),
                       ),

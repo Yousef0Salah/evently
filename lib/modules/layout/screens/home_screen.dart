@@ -3,6 +3,7 @@ import 'package:evently/core/app_provider/app_provider.dart';
 import 'package:evently/core/constants/app_categories.dart';
 import 'package:evently/core/models/event_model.dart';
 import 'package:evently/core/services/db_service.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/modules/event_details/screens/event_details.dart';
 import 'package:evently/modules/layout/widgets/event_widget.dart';
 import 'package:evently/modules/layout/widgets/tap_widget.dart';
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final user = FirebaseAuth.instance.currentUser!;
-
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
@@ -42,12 +43,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Welcome Back ✨',
+                          l10n.welcomeBack,
                           style: theme.textTheme.bodyMedium,
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          user.displayName ?? 'User',
+                          user.displayName ?? l10n.user,
                           style: theme.textTheme.titleLarge,
                         ),
                       ],
@@ -96,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     TapWidget(
                       categories: AppCategories(
                         id: 'all',
-                        name: 'All',
+                        nameKey: 'all', // ✅ was: 'All'
                         image: AppImages.heart,
                         darkImage: AppImages.heart,
                         icon: Icons.menu,
@@ -120,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 stream: DbService.getEventStream(
                   currentIndex == 0
                       ? null
-                      : AppCategories.categories[currentIndex-1 ].id,
+                      : AppCategories.categories[currentIndex - 1].id,
                 ),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {

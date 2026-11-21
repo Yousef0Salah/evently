@@ -1,6 +1,7 @@
 import 'package:evently/core/app_provider/app_provider.dart';
 import 'package:evently/core/constants/app_categories.dart';
 import 'package:evently/core/models/event_model.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/modules/add_event/manager/event_provider.dart';
 import 'package:evently/modules/layout/widgets/tap_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,13 +18,14 @@ class EditEvent extends StatelessWidget {
     var theme = Theme.of(context);
     var provider = Provider.of<AppProvider>(context);
     final bool isDark = provider.themeMode == ThemeMode.dark;
+    final l10n = AppLocalizations.of(context)!;
 
     return ChangeNotifierProvider(
       create: (context) => EventProvider(event: event),
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: theme.scaffoldBackgroundColor,
-          title: Text('Edit event', style: theme.textTheme.titleLarge),
+          title: Text(l10n.editEvent, style: theme.textTheme.titleLarge),
           centerTitle: true,
           leading: FittedBox(
             fit: BoxFit.scaleDown,
@@ -32,7 +34,7 @@ class EditEvent extends StatelessWidget {
                 Navigator.pop(context);
               },
               child: Container(
-                alignment: provider.appLocale == Locale('ar')
+                alignment: provider.appLocale == const Locale('ar')
                     ? .centerLeft
                     : .centerRight,
                 width: 32,
@@ -93,16 +95,15 @@ class EditEvent extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Text('Title', style: theme.textTheme.titleLarge),
+                  Text(l10n.title, style: theme.textTheme.titleLarge),
                   const SizedBox(height: 8),
                   TextFormField(
                     style: theme.textTheme.titleLarge!.copyWith(fontSize: 18),
-
                     controller: provider.titleEditingController,
-                    decoration: InputDecoration(hint: Text('Event Title')),
+                    decoration: InputDecoration(hint: Text(l10n.eventTitle)),
                   ),
                   const SizedBox(height: 8),
-                  Text('Description', style: theme.textTheme.titleLarge),
+                  Text(l10n.description, style: theme.textTheme.titleLarge),
                   const SizedBox(height: 8),
                   SizedBox(
                     height: 170,
@@ -111,15 +112,13 @@ class EditEvent extends StatelessWidget {
                       maxLines: null,
                       expands: true,
                       style: theme.textTheme.titleLarge!.copyWith(fontSize: 18),
-
                       textAlignVertical: TextAlignVertical.top,
                       decoration: InputDecoration(
-                        hint: Text('Event Description...'),
+                        hint: Text(l10n.eventDescription),
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-
                   Row(
                     children: [
                       Icon(
@@ -127,15 +126,17 @@ class EditEvent extends StatelessWidget {
                         color: theme.colorScheme.onSurface,
                       ),
                       const SizedBox(width: 8),
-                      Text('Event Date', style: theme.textTheme.titleLarge),
-                      Spacer(),
+                      Text(l10n.eventDate, style: theme.textTheme.titleLarge),
+                      const Spacer(),
                       GestureDetector(
                         onTap: () async {
                           showDatePicker(
                             context: context,
                             initialDate: provider.selecteddate,
                             firstDate: DateTime.now(),
-                            lastDate: DateTime.now().add(Duration(days: 365)),
+                            lastDate: DateTime.now().add(
+                              const Duration(days: 365),
+                            ),
                           ).then((value) {
                             if (value != null) {
                               provider.dateChange(value);
@@ -144,7 +145,7 @@ class EditEvent extends StatelessWidget {
                         },
                         child: Text(
                           provider.selecteddate == null
-                              ? 'Choose date'
+                              ? l10n.chooseDate
                               : DateFormat.yMd().format(provider.selecteddate!),
                           style: theme.textTheme.titleMedium!.copyWith(
                             decoration: TextDecoration.underline,
@@ -155,7 +156,6 @@ class EditEvent extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16),
-
                   Row(
                     children: [
                       Icon(
@@ -163,8 +163,8 @@ class EditEvent extends StatelessWidget {
                         color: theme.colorScheme.onSurface,
                       ),
                       const SizedBox(width: 8),
-                      Text('Event Time', style: theme.textTheme.titleLarge),
-                      Spacer(),
+                      Text(l10n.eventTime, style: theme.textTheme.titleLarge),
+                      const Spacer(),
                       GestureDetector(
                         onTap: () {
                           showTimePicker(
@@ -178,7 +178,7 @@ class EditEvent extends StatelessWidget {
                         },
                         child: Text(
                           provider.selectedtime == null
-                              ? 'Choose time'
+                              ? l10n.chooseTime
                               : provider.selectedtime!.format(context),
                           style: theme.textTheme.titleMedium!.copyWith(
                             decoration: TextDecoration.underline,
@@ -201,10 +201,10 @@ class EditEvent extends StatelessWidget {
                     },
                     child: Center(
                       child: provider.isLoading
-                          ? CircularProgressIndicator()
+                          ? const CircularProgressIndicator()
                           : Text(
-                              'Update event',
-                              style: TextStyle(
+                              l10n.updateEvent,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
                                 fontWeight: .w500,

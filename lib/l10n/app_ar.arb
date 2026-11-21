@@ -58,6 +58,97 @@
 "resetPassword": "إعادة تعيين كلمة المرور",
 "@resetPassword": {},
 "resetPasswordImageAlt": "صورة إعادة تعيين كلمة المرور",
-"@resetPasswordImageAlt": {}
-
+"@resetPasswordImageAlt": {},
+"categorySport": "رياضة",
+"@categorySport": {
+  "description": "Category name for sport events"
+},
+"categoryBirthday": "عيد ميلاد",
+"@categoryBirthday": {
+  "description": "Category name for birthday events"
+},
+"categoryBookClub": "نادي الكتاب",
+"@categoryBookClub": {
+  "description": "Category name for book club events"
+},
+"categoryExhibition": "معرض",
+"@categoryExhibition": {
+  "description": "Category name for exhibition events"
+},
+"categoryMeeting": "اجتماع",
+"@categoryMeeting": {
+  "description": "Category name for meeting events"
+},
+"all": "الكل",
+"@all": {
+  "description": "Tab meaning all events"
+},
+"welcomeBack": "مرحبًا بعودتك ✨",
+"@welcomeBack": {
+  "description": "Greeting on the home screen"
+},
+"user": "مستخدم",
+"@user": {
+  "description": "Fallback name when the user has no display name"
+},
+"searchForEvent": "ابحث عن فعالية",
+"@searchForEvent": {
+  "description": "Hint text of the event search field"
+},
+"darkMode": "الوضع الداكن",
+"@darkMode": {
+  "description": "Toggle label for dark mode"
+},
+"logout": "تسجيل الخروج",
+"@logout": {
+  "description": "Logout button label"
+},
+"addEvent": "إضافة فعالية",
+"@addEvent": {
+  "description": "AppBar title and button label for the add event screen"
+},
+"title": "العنوان",
+"@title": {
+  "description": "Label for the event title field"
+},
+"eventTitle": "عنوان الفعالية",
+"@eventTitle": {
+  "description": "Hint text for the event title field"
+},
+"description": "الوصف",
+"@description": {
+  "description": "Label for the event description field"
+},
+"eventDescription": "وصف الفعالية...",
+"@eventDescription": {
+  "description": "Hint text for the event description field"
+},
+"eventDate": "تاريخ الفعالية",
+"@eventDate": {
+  "description": "Label for the event date picker"
+},
+"chooseDate": "اختر التاريخ",
+"@chooseDate": {
+  "description": "Placeholder before a date is selected"
+},
+"eventTime": "وقت الفعالية",
+"@eventTime": {
+  "description": "Label for the event time picker"
+},
+"chooseTime": "اختر الوقت",
+"@chooseTime": {
+  "description": "Placeholder before a time is selected"
+},
+"eventDetails": "تفاصيل الفعالية",
+"@eventDetails": {
+  "description": "AppBar title of the event details screen"
+},
+"editEvent": "تعديل الفعالية",
+"@editEvent": {
+  "description": "AppBar title of the edit event screen"
+},
+"updateEvent": "تحديث الفعالية",
+"@updateEvent": {
+  "description": "Button label to save event edits"
+}
 }

@@ -1,4 +1,5 @@
 import 'package:evently/core/constants/app_categories.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class TapWidget extends StatelessWidget {
@@ -7,15 +8,19 @@ class TapWidget extends StatelessWidget {
     required this.categories,
     required this.isSelected,
   });
+
   final AppCategories categories;
   final bool isSelected;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var colorScheme = theme.colorScheme;
+    final l10n = AppLocalizations.of(context)!;
+
     return Tab(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         height: 40,
         decoration: BoxDecoration(
           borderRadius: .circular(16),
@@ -30,7 +35,7 @@ class TapWidget extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              categories.name,
+              categories.localizedName(l10n),   // ✅ was: categories.nameKey
               style: TextStyle(
                 fontSize: 16,
                 color: isSelected ? Colors.white : colorScheme.onSurface,

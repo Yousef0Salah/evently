@@ -104,5 +104,97 @@
 "resetPassword": "Reset password",
 "@resetPassword": {},
 "resetPasswordImageAlt": "Reset password illustration",
-"@resetPasswordImageAlt": {}
+"@resetPasswordImageAlt": {},
+"categorySport": "Sport",
+"@categorySport": {
+  "description": "Category name for sport events"
+},
+"categoryBirthday": "Birthday",
+"@categoryBirthday": {
+  "description": "Category name for birthday events"
+},
+"categoryBookClub": "Book Club",
+"@categoryBookClub": {
+  "description": "Category name for book club events"
+},
+"categoryExhibition": "Exhibition",
+"@categoryExhibition": {
+  "description": "Category name for exhibition events"
+},
+"categoryMeeting": "Meeting",
+"@categoryMeeting": {
+  "description": "Category name for meeting events"
+},
+"all": "All",
+"@all": {
+  "description": "Tab meaning all events"
+},
+"welcomeBack": "Welcome Back ✨",
+"@welcomeBack": {
+  "description": "Greeting on the home screen"
+},
+"user": "User",
+"@user": {
+  "description": "Fallback name when the user has no display name"
+},
+"searchForEvent": "Search for event",
+"@searchForEvent": {
+  "description": "Hint text of the event search field"
+},
+"darkMode": "Dark mode",
+"@darkMode": {
+  "description": "Toggle label for dark mode"
+},
+"logout": "Logout",
+"@logout": {
+  "description": "Logout button label"
+},
+"addEvent": "Add event",
+"@addEvent": {
+  "description": "AppBar title and button label for the add event screen"
+},
+"title": "Title",
+"@title": {
+  "description": "Label for the event title field"
+},
+"eventTitle": "Event Title",
+"@eventTitle": {
+  "description": "Hint text for the event title field"
+},
+"description": "Description",
+"@description": {
+  "description": "Label for the event description field"
+},
+"eventDescription": "Event Description...",
+"@eventDescription": {
+  "description": "Hint text for the event description field"
+},
+"eventDate": "Event Date",
+"@eventDate": {
+  "description": "Label for the event date picker"
+},
+"chooseDate": "Choose date",
+"@chooseDate": {
+  "description": "Placeholder before a date is selected"
+},
+"eventTime": "Event Time",
+"@eventTime": {
+  "description": "Label for the event time picker"
+},
+"chooseTime": "Choose time",
+"@chooseTime": {
+  "description": "Placeholder before a time is selected"
+},
+"eventDetails": "Event details",
+"@eventDetails": {
+  "description": "AppBar title of the event details screen"
+},
+"editEvent": "Edit event",
+"@editEvent": {
+  "description": "AppBar title of the edit event screen"
+},
+"updateEvent": "Update event",
+"@updateEvent": {
+  "description": "Button label to save event edits"
+}
 }
