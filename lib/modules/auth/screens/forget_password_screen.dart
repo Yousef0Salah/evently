@@ -1,6 +1,7 @@
 import 'package:evently/core/app_images.dart';
 import 'package:evently/core/app_provider/app_provider.dart';
 import 'package:evently/core/utils/validators.dart';
+import 'package:evently/l10n/app_localizations.dart'; // adjust to your generated path
 import 'package:evently/modules/auth/manager/auth_provider.dart';
 import 'package:evently/modules/auth/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class ForgetPasswordScreen extends StatelessWidget {
     var theme = Theme.of(context);
     ColorScheme colorScheme = Theme.of(context).colorScheme;
     var provider = Provider.of<AppProvider>(context);
+    final l10n = AppLocalizations.of(context)!;
+
     return ChangeNotifierProvider(
       create: (context) => AuthProvider(),
       child: Scaffold(
@@ -30,7 +33,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 Navigator.pop(context);
               },
               child: Container(
-                alignment: provider.appLocale == Locale('ar')
+                alignment: provider.appLocale == const Locale('ar')
                     ? .centerLeft
                     : .centerRight,
                 width: 32,
@@ -48,7 +51,10 @@ class ForgetPasswordScreen extends StatelessWidget {
               ),
             ),
           ),
-          title: Text('Forget Password', style: theme.textTheme.titleLarge),
+          title: Text(
+            l10n.forgetPasswordTitle,
+            style: theme.textTheme.titleLarge,
+          ),
           centerTitle: true,
           elevation: 0,
         ),
@@ -60,13 +66,13 @@ class ForgetPasswordScreen extends StatelessWidget {
                 Image.asset(
                   AppImages.resetPassword,
                   color: colorScheme.onSurface,
+                  semanticLabel: l10n.resetPasswordImageAlt,
                 ),
                 const SizedBox(height: 40),
                 CustomTextFormField(
                   controller: _emailController,
                   validator: (value) => Validators.validateEmail(value),
-
-                  hint: 'Enter your email',
+                  hint: l10n.enterYourEmail,
                   icon: AppImages.sms,
                 ),
                 const SizedBox(height: 24),
@@ -83,7 +89,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   },
                   child: Center(
                     child: provider.isLoading
-                        ? SizedBox(
+                        ? const SizedBox(
                             height: 29,
                             width: 29,
                             child: CircularProgressIndicator(
@@ -91,8 +97,8 @@ class ForgetPasswordScreen extends StatelessWidget {
                             ),
                           )
                         : Text(
-                            'Reset password',
-                            style: TextStyle(
+                            l10n.resetPassword,
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,
                               fontWeight: .w500,

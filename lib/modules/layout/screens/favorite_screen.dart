@@ -1,6 +1,6 @@
 import 'package:evently/core/app_images.dart';
+import 'package:evently/core/models/event_model.dart';
 import 'package:evently/core/services/db_service.dart';
-import 'package:evently/modules/auth/widgets/custom_text_form_field.dart';
 import 'package:evently/modules/event_details/screens/event_details.dart';
 import 'package:evently/modules/layout/widgets/event_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +14,7 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
+  List<EventModel> resultSearch = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +23,11 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              CustomTextFormField(
-                hint: 'Search for event',
-                icon: AppImages.search,
+              TextField(
+                decoration: InputDecoration(
+                  suffixIcon: Image.asset(AppImages.search),
+                  hintText: 'Search for event',
+                ),
               ),
               const SizedBox(height: 24),
               FutureBuilder(
@@ -48,7 +51,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             );
                           },
                           child: EventWidget(
-                            event: events[index],
+                            event: resultSearch.isEmpty
+                                ? events[index]
+                                : resultSearch[index],
                             onTapFav: () async {
                               await DbService.toggleFav(events[index]);
                               setState(() {});

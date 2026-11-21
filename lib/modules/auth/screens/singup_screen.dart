@@ -1,5 +1,6 @@
 import 'package:evently/core/app_images.dart';
 import 'package:evently/core/utils/validators.dart';
+import 'package:evently/l10n/app_localizations.dart'; // adjust to your generated path
 import 'package:evently/modules/auth/manager/auth_provider.dart';
 import 'package:evently/modules/auth/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class _SingupScreenState extends State<SingupScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -31,6 +33,8 @@ class _SingupScreenState extends State<SingupScreen> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context)!;
+
     return ChangeNotifierProvider(
       create: (context) => AuthProvider(),
       child: Scaffold(
@@ -56,7 +60,7 @@ class _SingupScreenState extends State<SingupScreen> {
                         Row(
                           children: [
                             Text(
-                              'Create your account',
+                              l10n.createYourAccount,
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: .w600,
@@ -69,25 +73,22 @@ class _SingupScreenState extends State<SingupScreen> {
                         CustomTextFormField(
                           controller: _nameController,
                           validator: (value) => Validators.validateName(value),
-
-                          hint: 'Enter your name',
+                          hint: l10n.enterYourName,
                           icon: AppImages.user,
                         ),
-
                         const SizedBox(height: 16),
                         CustomTextFormField(
                           controller: _emailController,
                           validator: (value) => Validators.validateEmail(value),
-                          hint: 'Enter your email',
+                          hint: l10n.enterYourEmail,
                           icon: AppImages.sms,
                         ),
-
                         const SizedBox(height: 16),
                         CustomTextFormField(
                           controller: _passwordController,
                           validator: (value) =>
                               Validators.validatePassword(value),
-                          hint: 'Enter your password',
+                          hint: l10n.enterYourPassword,
                           icon: AppImages.lock,
                           isPassword: true,
                         ),
@@ -99,11 +100,10 @@ class _SingupScreenState extends State<SingupScreen> {
                                 value,
                                 _passwordController.text,
                               ),
-                          hint: 'Confirm your password',
+                          hint: l10n.confirmYourPassword,
                           icon: AppImages.lock,
                           isPassword: true,
                         ),
-
                         const SizedBox(height: 48),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -124,7 +124,7 @@ class _SingupScreenState extends State<SingupScreen> {
                           },
                           child: Center(
                             child: provider.isLoading
-                                ? SizedBox(
+                                ? const SizedBox(
                                     height: 29,
                                     width: 29,
                                     child: CircularProgressIndicator(
@@ -132,8 +132,8 @@ class _SingupScreenState extends State<SingupScreen> {
                                     ),
                                   )
                                 : Text(
-                                    'Sing up',
-                                    style: TextStyle(
+                                    l10n.signUp,
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,
                                       fontWeight: .w500,
@@ -146,7 +146,7 @@ class _SingupScreenState extends State<SingupScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Already have an account ?',
+                              l10n.alreadyHaveAccount,
                               style: TextStyle(
                                 fontSize: 14,
                                 color: colorScheme.secondary,
@@ -157,7 +157,7 @@ class _SingupScreenState extends State<SingupScreen> {
                                 Navigator.pop(context);
                               },
                               child: Text(
-                                'Login',
+                                l10n.login,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: .w600,
@@ -180,7 +180,7 @@ class _SingupScreenState extends State<SingupScreen> {
                               ),
                             ),
                             Text(
-                              'Or',
+                              l10n.or,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: .w500,
@@ -217,8 +217,8 @@ class _SingupScreenState extends State<SingupScreen> {
                               Image.asset(AppImages.google),
                               const SizedBox(width: 16),
                               Text(
-                                'Sing up with Google',
-                                style: TextStyle(
+                                l10n.signUpWithGoogle,
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: .w500,
                                 ),

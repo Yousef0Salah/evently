@@ -62,5 +62,47 @@
   "skip": "Skip",
   "@skip": {},
   "getStarted": "Get Started",
-  "@getStarted": {}
+  "@getStarted": {},
+  "createYourAccount": "Create your account",
+"@createYourAccount": {
+  "description": "Title of the signup screen"
+},
+"enterYourName": "Enter your name",
+"@enterYourName": {},
+"enterYourEmail": "Enter your email",
+"@enterYourEmail": {},
+"enterYourPassword": "Enter your password",
+"@enterYourPassword": {},
+"confirmYourPassword": "Confirm your password",
+"@confirmYourPassword": {},
+"signUp": "Sign up",
+"@signUp": {},
+"alreadyHaveAccount": "Already have an account?",
+"@alreadyHaveAccount": {},
+"login": "Login",
+"@login": {},
+"or": "Or",
+"@or": {},
+"signUpWithGoogle": "Sign up with Google",
+"@signUpWithGoogle": {},
+"loginToYourAccount": "Login to your account",
+"@loginToYourAccount": {
+  "description": "Title of the login screen"
+},
+"forgetPassword": "Forget Password?",
+"@forgetPassword": {},
+"dontHaveAccount": "Don’t have an account?",
+"@dontHaveAccount": {},
+"signup": "Signup",
+"@signup": {},
+"loginWithGoogle": "Login with Google",
+"@loginWithGoogle": {},
+"forgetPasswordTitle": "Forget Password",
+"@forgetPasswordTitle": {
+  "description": "AppBar title of the forget password screen"
+},
+"resetPassword": "Reset password",
+"@resetPassword": {},
+"resetPasswordImageAlt": "Reset password illustration",
+"@resetPasswordImageAlt": {}
 }

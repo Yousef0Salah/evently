@@ -42,21 +42,35 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
 
       userCredential = await AuthServices.signInWithGoogle();
-      // await AuthServices.verificationEmail(user: user);
-      // Toast.show(title: 'Check your Email', context: context);
 
-      Toast.show(
-        title: 'Welcome ${userCredential.user!.displayName}',
-        context: context,
-      );
-              Navigator.pushReplacementNamed(context, LayoutScreen.id);
+      final user = userCredential.user;
 
+      if (user == null) {
+        throw Exception('Google sign-in failed');
+      }
+
+      Toast.show(title: 'Welcome ${user.displayName}', context: context);
+
+      if (!context.mounted) return user;
+
+      Navigator.pushReplacementNamed(context, LayoutScreen.id);
+
+      return user;
     } catch (e) {
-      Toast.show(title: e.toString(), context: context, type: ToastType.error);
+      if (context.mounted) {
+        Toast.show(
+          title: e.toString(),
+          context: context,
+          type: ToastType.error,
+        );
+      }
+
+      debugPrint('Google Sign In Error: $e');
+      return null;
+    } finally {
+      isLoading = false;
+      notifyListeners();
     }
-    isLoading = false;
-    notifyListeners();
-    return null;
   }
 
   Future<User?> login({

@@ -16,6 +16,48 @@
   "connectFriendsDescription": "اجعل كل فعالية ذكرى لا تُنسى من خلال مشاركة التجربة مع الآخرين. يتيح لك تطبيقنا دعوة أصدقائك وإبقاء الجميع على اطلاع والاحتفال باللحظات معًا. التقط الإثارة وشاركها مع شبكتك لتتمكن من استعادة أجمل اللحظات والاحتفاظ بالذكريات."
   ,"next": "التالي",
   "skip":"تخطي",
-  "getStarted": "ابدأ الآن"
+  "getStarted": "ابدأ الآن",
+  "createYourAccount": "أنشئ حسابك",
+"@createYourAccount": {
+  "description": "Title of the signup screen"
+},
+"enterYourName": "أدخل اسمك",
+"@enterYourName": {},
+"enterYourEmail": "أدخل بريدك الإلكتروني",
+"@enterYourEmail": {},
+"enterYourPassword": "أدخل كلمة المرور",
+"@enterYourPassword": {},
+"confirmYourPassword": "أكد كلمة المرور",
+"@confirmYourPassword": {},
+"signUp": "إنشاء حساب",
+"@signUp": {},
+"alreadyHaveAccount": "لديك حساب بالفعل؟",
+"@alreadyHaveAccount": {},
+"login": "تسجيل الدخول",
+"@login": {},
+"or": "أو",
+"@or": {},
+"signUpWithGoogle": "إنشاء حساب باستخدام Google",
+"@signUpWithGoogle": {},
+"loginToYourAccount": "تسجيل الدخول إلى حسابك",
+"@loginToYourAccount": {
+  "description": "Title of the login screen"
+},
+"forgetPassword": "هل نسيت كلمة المرور؟",
+"@forgetPassword": {},
+"dontHaveAccount": "ليس لديك حساب؟",
+"@dontHaveAccount": {},
+"signup": "إنشاء حساب",
+"@signup": {},
+"loginWithGoogle": "تسجيل الدخول باستخدام Google",
+"@loginWithGoogle": {},
+"forgetPasswordTitle": "نسيت كلمة المرور",
+"@forgetPasswordTitle": {
+  "description": "AppBar title of the forget password screen"
+},
+"resetPassword": "إعادة تعيين كلمة المرور",
+"@resetPassword": {},
+"resetPasswordImageAlt": "صورة إعادة تعيين كلمة المرور",
+"@resetPasswordImageAlt": {}
 
 }
