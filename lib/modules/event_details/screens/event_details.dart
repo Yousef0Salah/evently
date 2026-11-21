@@ -17,10 +17,12 @@ class EventDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var provider = Provider.of<AppProvider>(context);
+    final bool isDark = provider.themeMode == ThemeMode.dark;
+
     AppCategories categories = AppCategories.categories.firstWhere(
       (element) => element.id == event.categoryId,
     );
-    
+
     return ChangeNotifierProvider(
       create: (context) => EventProvider(),
       child: Scaffold(
@@ -104,7 +106,12 @@ class EventDetails extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: .circular(16),
-                    child: Image.asset(categories.image),
+
+                    child: Image.asset(
+                      fit: BoxFit.fill,
+                      width: .infinity,
+                      isDark ? categories.darkImage : categories.image,
+                    ),
                   ),
 
                   const SizedBox(height: 8),

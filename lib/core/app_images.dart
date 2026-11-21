@@ -21,6 +21,13 @@ abstract class AppImages {
   static const String exhibition = 'assets/category/Exhibition.png';
   static const String meeting = 'assets/category/Meeting.png';
   static const String sport = 'assets/category/Sport.png';
+  //========dark=======
+  static const String darkBirthday = 'assets/category/darkBirthday.png';
+  static const String darkBookClub = 'assets/category/darkBookClub.png';
+  static const String darkExhibition = 'assets/category/darkExhibition.png';
+  static const String darkMeeting = 'assets/category/darkMeeting.png';
+  static const String darkSport = 'assets/category/darkSport.png';
+
   //--------------------images-----------
   static const String evently = 'assets/images/Evently.png';
   static const String pranding = 'assets/images/pranding.png';

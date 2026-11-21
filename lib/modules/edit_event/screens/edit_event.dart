@@ -16,6 +16,8 @@ class EditEvent extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var provider = Provider.of<AppProvider>(context);
+    final bool isDark = provider.themeMode == ThemeMode.dark;
+
     return ChangeNotifierProvider(
       create: (context) => EventProvider(event: event),
       child: Scaffold(
@@ -58,7 +60,13 @@ class EditEvent extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: .circular(16),
-                    child: Image.asset(provider.selectedCategory.image),
+                    child: Image.asset(
+                      fit: BoxFit.fill,
+                      width: .infinity,
+                      isDark
+                          ? provider.selectedCategory.darkImage
+                          : provider.selectedCategory.image,
+                    ),
                   ),
                   DefaultTabController(
                     length: AppCategories.categories.length,

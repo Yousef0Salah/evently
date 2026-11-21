@@ -98,6 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         id: 'all',
                         name: 'All',
                         image: AppImages.heart,
+                        darkImage: AppImages.heart,
                         icon: Icons.menu,
                       ),
                       isSelected: currentIndex == 0,

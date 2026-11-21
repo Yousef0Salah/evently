@@ -1,8 +1,10 @@
 import 'package:evently/core/app_images.dart';
+import 'package:evently/core/app_provider/app_provider.dart';
 import 'package:evently/core/constants/app_categories.dart';
 import 'package:evently/core/models/event_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class EventWidget extends StatelessWidget {
   const EventWidget({super.key, required this.event, this.onTapFav});
@@ -12,6 +14,8 @@ class EventWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var colorScheme = theme.colorScheme;
+    var provider = Provider.of<AppProvider>(context);
+    final bool isDark =  provider.themeMode == ThemeMode.dark;
     var category = AppCategories.categories.firstWhere((element) {
       return element.id == event.categoryId;
     });
@@ -22,7 +26,11 @@ class EventWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: theme.dividerColor),
         image: DecorationImage(
-          image: AssetImage(category.image),
+          image: AssetImage(
+           isDark
+                ? category.darkImage
+                : category.image,
+          ),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(16),

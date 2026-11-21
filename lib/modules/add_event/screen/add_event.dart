@@ -14,6 +14,7 @@ class AddEvent extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var provider = Provider.of<AppProvider>(context);
+    final bool isDark = provider.themeMode == ThemeMode.dark;
     return ChangeNotifierProvider(
       create: (context) => EventProvider(),
       child: Scaffold(
@@ -56,7 +57,13 @@ class AddEvent extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: .circular(16),
-                    child: Image.asset(provider.selectedCategory.image),
+                    child: Image.asset(
+                      fit: BoxFit.fill,
+                      width: .infinity,
+                      isDark
+                          ? provider.selectedCategory.darkImage
+                          : provider.selectedCategory.image,
+                    ),
                   ),
                   DefaultTabController(
                     length: AppCategories.categories.length,
@@ -87,7 +94,7 @@ class AddEvent extends StatelessWidget {
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: provider.titleEditingController,
-                                          style: theme.textTheme.titleLarge!.copyWith(fontSize: 18),
+                    style: theme.textTheme.titleLarge!.copyWith(fontSize: 18),
 
                     decoration: InputDecoration(hint: Text('Event Title')),
                   ),
